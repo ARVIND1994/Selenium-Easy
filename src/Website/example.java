@@ -1,6 +1,10 @@
 package Website;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -29,11 +33,33 @@ public class example {
 		      }
 		      driver.findElement(By.id("sum1")).sendKeys("10");
 		      driver.findElement(By.id("sum2")).sendKeys("20");
-		      driver.findElement(By.xpath("//button[@onclick='return total()']")).click();	
-		      driver.findElement(By.xpath("//li[@class='tree-branch']//a[@href='Input Forms']")).click();
-		     // driver.findElement(By.linkText("Input Forms")).click();
-		     // driver.findElement(By.linkText("display: list-item;")).click();
-				
+		      driver.findElement(By.xpath("//button[@onclick='return total()']")).click();			    
+		       JavascriptExecutor js = (JavascriptExecutor) driver;
+		      js.executeScript("window.scrollBy(0,-500)");
+		      
+		   
+		    /*
+		  driver.findElement(By.xpath("//li[@class='tree-branch']child::ul;")).click();*/
+		   
+		      
+		      
+		     driver.findElement(By.linkText("Input Forms")).click();
+		     driver.findElement(By.linkText("Checkbox Demo")).click();
+		     driver.findElement(By.id("isAgeSelected")).click();
+		     WebElement checkbox = driver.findElement(By.className("cb1-element"));
+		     Dimension numberofcheckbox = checkbox.getSize();
+		     for(int i = 0 ;i <=4;i++)
+		     {
+		    
+
+		   //If the checkbox is unchecked then isSelected() will return false 
+		   //and NOT of false is true, hence we can click on checkbox
+		   if(!checkbox.isSelected())
+		   {
+		   	checkbox.click();
+		     }
+		    
 	}
 
+	}
 }
