@@ -66,22 +66,29 @@ public class example {
 		     driver.findElement(By.linkText("Input Forms")).click();
 		     driver.findElement(By.xpath("//a[@href='./basic-radiobutton-demo.html']")).click();
 		     
+		     driver.findElement(By.linkText("Input Forms")).click();
+		     driver.findElement(By.xpath("//a[@href='./basic-radiobutton-demo.html']")).click();
+		     
+		     driver.findElement(By.xpath("//input[@value='Male']")).click();
+		     driver.findElement(By.id("buttoncheck")).click();		     
 		     List radiobutton = driver.findElements(By.xpath("//input[@name='optradio']"));
 		     int radiobuttonChek=radiobutton.size();
-		     for(int cCount=0; cCount<radiobuttonChek;cCount++) {
-		    	//String getStringValue=radiobutton.get(cCount).toString();
-
-		    	
-		    	driver.findElement(By.xpath("//input[@value='Male']")).click();
-		    	driver.findElement(By.xpath("//input[@value='Female']")).click();
-		    	
-		    	if(((WebElement) radiobutton.get(cCount)).isSelected()){
+		     String getRadioVal="";
+		     for(int cCount=0; cCount<radiobuttonChek;cCount++) {	
+		    	/*if(((WebElement) radiobutton.get(cCount)).isSelected()){
+		    		getRadioVal=((WebElement) radiobutton.get(cCount)).getAttribute("value");
 					System.out.println(" Radio is selected ");
 				}else{ 
-					System.out.println(" Radio is not selected "); 
-				} 
+		    		getRadioVal=((WebElement) radiobutton.get(cCount)).getAttribute("value");
+					System.out.println(" Radio is not selected ");
+				} */	    	
+		    	if(((WebElement) radiobutton.get(cCount)).isSelected()){
+		    		getRadioVal=((WebElement) radiobutton.get(cCount)).getAttribute("value");
+				}
 		     }
-		     driver.findElement(By.id("buttoncheck")).click();
-		     
+		     System.out.println("Radio button '"+getRadioVal+"' is checked"); 
+		     driver.findElement(By.xpath("//input[@value='Male']")).click();
+		     driver.findElement(By.xpath("input[@value='5 - 15']")).click();
+		    
 	}
 }
