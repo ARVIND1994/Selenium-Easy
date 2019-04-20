@@ -1,5 +1,6 @@
 package Website;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -46,20 +47,41 @@ public class example {
 		     driver.findElement(By.linkText("Input Forms")).click();
 		     driver.findElement(By.linkText("Checkbox Demo")).click();
 		     driver.findElement(By.id("isAgeSelected")).click();
-		     WebElement checkbox = driver.findElement(By.className("cb1-element"));
-		     Dimension numberofcheckbox = checkbox.getSize();
-		     for(int i = 0 ;i <=4;i++)
-		     {
-		    
-
-		   //If the checkbox is unchecked then isSelected() will return false 
-		   //and NOT of false is true, hence we can click on checkbox
-		   if(!checkbox.isSelected())
-		   {
-		   	checkbox.click();
+		        
+		     List checkbox = driver.findElements(By.className("cb1-element"));
+		     int checkboxSize=checkbox.size();
+		     int countVal=0;
+		    // ((WebElement) checkbox.get(1)).click(); 
+		     for(int cCount=0; cCount<checkboxSize;cCount++) {
+		    	if(((WebElement) checkbox.get(cCount)).isSelected()){
+					System.out.println(cCount+" checkBox is selected ");
+				}else{ 
+			    	countVal++;
+					System.out.println(cCount+" checkBox is not selected "); 
+				} 
+		     } 
+		     if(countVal==checkboxSize) {
+		    	 driver.findElement(By.id("check1")).click();
 		     }
-		    
-	}
+		     driver.findElement(By.linkText("Input Forms")).click();
+		     driver.findElement(By.xpath("//a[@href='./basic-radiobutton-demo.html']")).click();
+		     
+		     List radiobutton = driver.findElements(By.xpath("//input[@name='optradio']"));
+		     int radiobuttonChek=radiobutton.size();
+		     for(int cCount=0; cCount<radiobuttonChek;cCount++) {
+		    	//String getStringValue=radiobutton.get(cCount).toString();
 
+		    	
+		    	driver.findElement(By.xpath("//input[@value='Male']")).click();
+		    	driver.findElement(By.xpath("//input[@value='Female']")).click();
+		    	
+		    	if(((WebElement) radiobutton.get(cCount)).isSelected()){
+					System.out.println(" Radio is selected ");
+				}else{ 
+					System.out.println(" Radio is not selected "); 
+				} 
+		     }
+		     driver.findElement(By.id("buttoncheck")).click();
+		     
 	}
 }
