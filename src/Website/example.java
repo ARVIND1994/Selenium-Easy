@@ -88,7 +88,16 @@ public class example {
 		     }
 		     System.out.println("Radio button '"+getRadioVal+"' is checked"); 
 		     driver.findElement(By.xpath("//input[@value='Male']")).click();
-		     driver.findElement(By.xpath("input[@value='5 - 15']")).click();
+		     driver.findElement(By.xpath("//input[@value='5 - 15']")).click();
+		     driver.findElement(By.xpath("//button[@onclick='getValues();']")).click();
+		     if(driver.getPageSource().contains("Age group: 5 - 15"))
+		     {
+		    	 System.out.println("Age group: 5 - 15");
+		     }
+		     else
+		     {
+		    	 System.out.println("Nothing is printed");
+		     }
 		    
 	}
 }
